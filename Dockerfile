@@ -24,5 +24,5 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV LOG_LEVEL=INFO
 ENV ENVIRONMENT=production
 
-# RQ worker command
-CMD ["rq", "worker", "--with-scheduler", "--url", "${REDIS_URL}", "--max-jobs", "100", "pdf_parsing", "portfolio_processing"]
+# RQ worker command (shell form to expand env vars)
+CMD rq worker --with-scheduler --url $REDIS_URL --max-jobs 100 pdf_parsing portfolio_processing
